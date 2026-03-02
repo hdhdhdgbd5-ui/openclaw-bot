@@ -1,0 +1,18 @@
+{
+    "last_check":  "2026-03-02T02:12:11.8478235+01:00",
+    "minimax":  "degraded",
+    "timestamp":  "2026-03-02 02:12:11",
+    "groq_details":  {
+                         "status":  "online",
+                         "code":  0,
+                         "error":  null,
+                         "models":  20
+                     },
+    "minimax_details":  {
+                            "status":  "degraded",
+                            "code":  404,
+                            "error":  "Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden.",
+                            "note":  null
+                        },
+    "groq":  "online"
+}

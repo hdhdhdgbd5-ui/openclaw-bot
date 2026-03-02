@@ -1,0 +1,42 @@
+# CryptoTradeGenius - Automated AI Crypto Trading Bot
+# Core dependencies
+ccxt>=4.2.0
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+ta-lib>=0.4.28
+python-telegram-bot>=20.7
+python-dotenv>=1.0.0
+requests>=2.31.0
+websockets>=12.0
+asyncio-mqtt>=0.16.0
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+redis>=5.0.0
+schedule>=1.2.0
+pytz>=2024.1
+fastapi>=0.109.0
+uvicorn>=0.27.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+loguru>=0.7.0
+
+# AI/ML dependencies
+tensorflow>=2.15.0
+keras>=2.15.0
+xgboost>=2.0.0
+lightgbm>=4.2.0
+prophet>=1.1.5
+
+# Data analysis
+matplotlib>=3.8.0
+seaborn>=0.13.0
+plotly>=5.18.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+
+# Deployment
+gunicorn>=21.2.0

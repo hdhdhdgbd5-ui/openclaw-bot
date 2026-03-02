@@ -1,0 +1,21 @@
+{
+  "serviceDetails": {
+    "envSpecificDetails": {
+      "dockerCommand": ""
+    }
+  },
+  "envVars": [
+    {
+      "key": "OPENCLAW_GATEWAY_TOKEN",
+      "value": "3465e428d44745e8bff6aed6d6d33d3e935fe673762a414a"
+    },
+    {
+      "key": "TELEGRAM_BOT_TOKEN",
+      "value": "8455353239:AAHMxK1y--esr3d_0I5UxBCHnhLy0xglo94"
+    },
+    {
+      "key": "NODE_OPTIONS",
+      "value": "--max-old-space-size=400"
+    }
+  ]
+}

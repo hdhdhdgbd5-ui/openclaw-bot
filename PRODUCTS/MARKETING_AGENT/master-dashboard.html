@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angel Army Marketing Dashboard</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #0f172a; color: white; margin: 0; }
+        .header { background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 32px; }
+        .header p { margin: 10px 0 0; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: #1e293b; border-radius: 16px; padding: 25px; border: 1px solid #334155; }
+        .card-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #60a5fa; }
+        .metric { display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: #0f172a; border-radius: 8px; }
+        .metric-label { color: #94a3b8; }
+        .metric-value { font-weight: 700; color: #4ade80; }
+        .btn { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 16px; cursor: pointer; width: 100%; margin: 5px 0; transition: all 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(99,102,241,0.4); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); }
+        .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .status-active { background: #4ade80; color: #064e3b; }
+        .status-pending { background: #fbbf24; color: #78350f; }
+        .status-off { background: #6b7280; color: #1f2937; }
+        .revenue { font-size: 36px; font-weight: 800; background: linear-gradient(135deg, #4ade80, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .task-list { list-style: none; padding: 0; }
+        .task-item { display: flex; align-items: center; padding: 12px; background: #0f172a; margin: 8px 0; border-radius: 8px; }
+        .task-item input[type="checkbox"] { margin-right: 10px; width: 20px; height: 20px; accent-color: #6366f1; }
+        .task-item label { flex: 1; }
+        .task-item.completed { opacity: 0.5; text-decoration: line-through; }
+        .alert { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #78350f; padding: 15px; border-radius: 8px; margin: 20px 0; font-weight: 600; }
+        .footer { text-align: center; padding: 30px; color: #64748b; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>👼 ANGEL ARMY DASHBOARD</h1>
+        <p>Automated Marketing System</p>
+    </div>
+
+    <div class="container">
+        <!-- REVENUE -->
+        <div style="text-align: center; padding: 30px;">
+            <div style="font-size: 14px; color: #94a3b8;">MONTHLY REVENUE</div>
+            <div class="revenue" id="revenue">$0</div>
+            <div style="font-size: 14px; color: #4ade80;">🚀 Target: $1,400/month</div>
+        </div>
+
+        <div class="grid">
+            <!-- PRODUCTS -->
+            <div class="card">
+                <div class="card-title">📦 Products Status</div>
+                
+                <div class="metric">
+                    <span class="metric-label">RentVault</span>
+                    <span class="status status-pending">NEEDS DEPLOY</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">StreakVault</span>
+                    <span class="status status-pending">NEEDS DEPLOY</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">FocusMaster</span>
+                    <span class="status status-pending">NEEDS DEPLOY</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">BudgetVault</span>
+                    <span class="status status-pending">NEEDS DEPLOY</span>
+                </div>
+
+                <button class="btn btn-success" onclick="deployAll()">🚀 AUTO-DEPLOY ALL PRODUCTS</button>
+                <button class="btn" onclick="checkDeployments()">🔍 Check Status</button>
+            </div>
+
+            <!-- MARKETING -->
+            <div class="card">
+                <div class="card-title">📢 Auto-Marketing</div>
+                
+                <div class="metric">
+                    <span class="metric-label">Reddit Poster</span>
+                    <span class="status status-off">READY</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">TikTok Scripts</span>
+                    <span class="status status-active">30 READY</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Email Sequences</span>
+                    <span class="status status-active">4 READY</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Next Post in</span>
+                    <span id="timer">04:00:00</span>
+                </div>
+
+                <button class="btn" onclick="openRedditAgent()">📱 Open Reddit Agent</button>
+                <button class="btn" onclick="openTikTokScripts()">🎬 Get TikTok Scripts</button>
+            </div>
+
+            <!-- TASKS -->
+            <div class="card">
+                <div class="card-title">✅ Your Actions (5 min/day)</div>
+                
+                <ul class="task-list" id="tasks">
+                    <li class="task-item">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">Deploy products to GitHub</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task2">
+                        <label for="task2">Copy 1 TikTok script from generator</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">Post to Reddit (use generated text)</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task4">
+                        <label for="task4">Check revenue dashboard</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task5">
+                        <label for="task5">Approve next auto-post</label>
+                    </li>
+                </ul>
+
+                <button class="btn" onclick="generateTomorrowTasks()">📋 Generate Tomorrow's Tasks</button>
+            </div>
+
+            <!-- ANALYTICS -->
+            <div class="card">
+                <div class="card-title">📊 Quick Stats</div>
+                
+                <div class="metric">
+                    <span class="metric-label">Total Users</span>
+                    <span class="metric-value">0</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">GitHub Traffic</span>
+                    <span class="metric-value">0</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Reddit Views</span>
+                    <span class="metric-value">0</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Email Subscribers</span>
+                    <span class="metric-value">0</span>
+                </div>
+
+                <button class="btn" onclick="refreshStats()">🔄 Refresh Stats</button>
+            </div>
+        </div>
+
+        <div class="alert">
+            ⚠️ NEXT ACTION REQUIRED: Deploy products to GitHub Pages
+            <br>
+            <a href="auto-deploy.bat" download style="color: #78350f; font-weight: bold;">⬇️ Download Auto-Deploy Script</a>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <button class="btn btn-danger" onclick="stopAll()">⏹️ HALT ALL SYSTEMS</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        Angel Army Marketing System v1.0 | Built 2026-02-19
+    </div>
+
+    <script>
+        function deployAll() {
+            alert('To deploy:\n\n1. Open PRODUCTS/auto-deploy.bat\n2. Enter your GitHub username\n3. Enter your GitHub token\n4. Script uploads all 4 products\n5. Sites go LIVE in 2 minutes\n\nGitHub Token: Get at github.com/settings/tokens');
+        }
+
+        function openRedditAgent() {
+            window.open('reddit-poster.html', '_blank');
+        }
+
+        function openTikTokScripts() {
+            window.open('tiktok-scripts.html', '_blank');
+        }
+
+        function generateTomorrowTasks() {
+            alert('Tomorrow:\n1. Deploy RentVault (15 min)\n2. Copy 1 TikTok script (2 min)\n3. Post to r/personalfinance (3 min)\nTotal: 20 minutes');
+        }
+
+        function checkDeployments() {
+            alert('Status:\nAll 4 products: Ready to deploy\nMarketing materials: Complete\nRevenue systems: Ready\n\nTime to first sale: 30 minutes after deploy');
+        }
+
+        function refreshStats() {
+            document.querySelectorAll('.metric-value').forEach(el => {
+                el.textContent = '0';
+            });
+            alert('Stats updated! Will populate after deployment.');
+        }
+
+        function stopAll() {
+            if (confirm('Stop all marketing agents?')) {
+                alert('All systems halted.');
+            }
+        }
+
+        // Countdown timer
+        let timeLeft = 4 * 60 * 60; // 4 hours
+        setInterval(() => {
+            timeLeft--;
+            if (timeLeft < 0) timeLeft = 4 * 60 * 60;
+            
+            const hrs = Math.floor(timeLeft / 3600);
+            const mins = Math.floor((timeLeft % 3600) / 60);
+            const secs = timeLeft % 60;
+            
+            document.getElementById('timer').textContent = 
+                `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }, 1000);
+
+        // Task completion
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', function() {
+                this.parentElement.classList.toggle('completed', this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

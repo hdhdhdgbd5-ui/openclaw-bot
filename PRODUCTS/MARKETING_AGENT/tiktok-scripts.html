@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TikTok Script Generator</title>
+    <style>
+        body { font-family: sans-serif; background: #0f0f23; color: white; padding: 20px; }
+        .script-card { background: #1a1a3e; padding: 20px; margin: 15px 0; border-radius: 15px; border-left: 4px solid #ff0050; }
+        .product-name { color: #ff0050; font-size: 20px; font-weight: bold; }
+        .hook { color: #fff; font-size: 24px; margin: 15px 0; font-weight: bold; }
+        .script-body { background: #2d2d5a; padding: 15px; border-radius: 10px; margin: 10px 0; }
+        .timing { color: #00f0c8; font-size: 14px; }
+        .btn { background: #ff0050; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 16px; cursor: pointer; margin: 10px 5px; }
+        .btn:hover { background: #d5007a; }
+        .hashtags { color: #a0a0c0; font-size: 14px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🎬 TikTok Script Generator</h1>
+    <p>Generate videos without filming - use screen recordings.</p>
+    
+    <div style="margin: 20px 0;">
+        <button class="btn" onclick="generateAll()">🎲 GENERATE ALL 30 SCRIPTS</button>
+        <button class="btn" onclick="exportScripts()">📥 Export All</button>
+    </div>
+
+    <div id="scripts"></div>
+
+    <script>
+        const products = {
+            rentvault: {
+                name: "RentVault",
+                hooks: [
+                    "I lost $1800 to my landlord...",
+                    "This app saved my security deposit",
+                    "Every renter needs this",
+                    "Landlords hate this trick",
+                    "How to get your deposit back 100%",
+                    "Free app for renters"
+                ],
+                visuals: [
+                    "Show phone gallery messy",
+                    "Show RentVault organized",
+                    "Screen record app usage",
+                    "PDF export demonstration"
+                ],
+                ctas: [
+                    "Link in bio - free",
+                    "Save your deposit now",
+                    "Free forever",
+                    "Link in comments"
+                ]
+            },
+            streakvault: {
+                name: "StreakVault", 
+                hooks: [
+                    "47 day streak on my habit",
+                    "This trick builds habits fast",
+                    "Day 100 of my workout streak",
+                    "How I finally stuck to my habits",
+                    "Simple habit tracker that works",
+                    "Better than expensive apps"
+                ],
+                visuals: [
+                    "Open app, show streak",
+                    "Tap complete, streak increases",
+                    "Confetti animation",
+                    "Stats screen"
+                ],
+                ctas: [
+                    "Start your streak today",
+                    "Link in bio",
+                    "Free no ads",
+                    "Build your streaks"
+                ]
+            },
+            focusmaster: {
+                name: "FocusMaster",
+                hooks: [
+                    "Can you beat my streak?",
+                    "Game that pays you to focus",
+                    "This game helped me study",
+                    "2 minute challenge - most fail",
+                    "Stay off your phone, get rewarded",
+                    "Focus game - my streak is 45 days"
+                ],
+                visuals: [
+                    "Start timer, music builds tension",
+                    "Timer counting down",
+                    "Complete - confetti explosion",
+                    "Coin reward animation"
+                ],
+                ctas: [
+                    "Beat my streak",
+                    "Play free",
+                    "Link in bio",
+                    "Challenge accepted?"
+                ]
+            },
+            budgetvault: {
+                name: "BudgetVault",
+                hooks: [
+                    "Paid app? No thanks. Free forever.",
+                    "I track every dollar with this",
+                    "No bank needed budget app",
+                    "Finally understand where money goes",
+                    "Free budget tracker actually works",
+                    "Saved $500 using this"
+                ],
+                visuals: [
+                    "Show expense categories",
+                    "Add transaction fast",
+                    "Monthly breakdown",
+                    "CSV export"
+                ],
+                ctas: [
+                    "Link in bio - free",
+                    "Track your money",
+                    "Free budget app",
+                    "Start today"
+                ]
+            }
+        };
+
+        const hashtags = "#SideHustle #PassiveIncome #FreeApp #Productivity #MoneyTips #LifeHack #Frugal #Budgeting #Habits #Focus #RentalTips #TenantRights #BuildInPublic #IndieDev #WebApp";
+
+        function generateScript(product, num) {
+            const p = products[product];
+            const hook = p.hooks[Math.floor(Math.random() * p.hooks.length)];
+            const visual = p.visuals[Math.floor(Math.random() * p.visuals.length)];
+            const cta = p.ctas[Math.floor(Math.random() * p.ctas.length)];
+
+            return `
+                <div class="script-card">
+                    <div class="product-name">${p.name} - Script #${num}</div>
+                    <div class="hook">${hook}</div>
+                    
+                    <div class="script-body">
+                        <div class="timing">0-3s: [VISUAL] ${visual}</div>
+                        <div class="timing">0-3s: [AUDIO] ${hook}</div>
+                        <div class="timing">3-15s: [VISUAL] Screen record using app</div>
+                        <div class="timing">15-25s: [VISUAL] Show features/results</div>
+                        <div class="timing">25-30s: [AUDIO] ${cta}</div>
+                        <div class="timing">25-30s: [TEXT] "${cta}"</div>
+                    </div>
+                    
+                    <div class="hashtags">${hashtags}</div>
+                    
+                    <button class="btn" onclick="copyScript(this)">📋 Copy Script</button>
+                </div>
+            `;
+        }
+
+        function generateAll() {
+            const container = document.getElementById('scripts');
+            let html = '';
+            
+            ['rentvault', 'streakvault', 'focusmaster', 'budgetvault'].forEach(product => {
+                for (let i = 1; i <= 5; i++) {
+                    html += generateScript(product, i);
+                }
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function copyScript(btn) {
+            const card = btn.parentElement;
+            const text = card.querySelector('.script-body').innerText;
+            navigator.clipboard.writeText(text);
+            alert('Script copied! Ready to film.');
+        }
+
+        function exportScripts() {
+            let allScripts = '';
+            document.querySelectorAll('.script-card').forEach(card => {
+                allScripts += card.innerText + '\n\n---\n\n';
+            });
+            
+            const blob = new Blob([allScripts], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'tiktok-scripts.txt';
+            a.click();
+        }
+
+        // Auto-generate on load
+        generateAll();
+    </script>
+</body>
+</html>

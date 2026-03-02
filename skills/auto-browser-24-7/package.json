@@ -1,0 +1,30 @@
+{
+  "name": "auto-browser-24-7",
+  "version": "1.0.0",
+  "description": "Fully automated headless browser with Cloudflare bypass, CAPTCHA solving, session management, and HTTP API control",
+  "main": "scripts/api.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/launcher.mjs server",
+    "browser": "node scripts/launcher.mjs browser",
+    "test": "node scripts/launcher.mjs test",
+    "api": "node scripts/api-server.mjs"
+  },
+  "keywords": [
+    "browser",
+    "automation",
+    "headless",
+    "playwright",
+    "cloudflare",
+    "captcha",
+    "24/7"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

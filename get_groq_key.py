@@ -1,0 +1,10 @@
+from playwright.sync_api import sync_playwright
+p = sync_playwright().start()
+b = p.chromium.launch(headless=False)
+page = b.new_page()
+page.goto('https://console.groq.com/keys')
+page.wait_for_timeout(5000)
+page.screenshot(path='groq_before.png')
+print('Screenshot saved')
+b.close()
+p.stop()

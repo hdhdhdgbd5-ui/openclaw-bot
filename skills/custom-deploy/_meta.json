@@ -1,0 +1,19 @@
+{
+  "name": "custom-deploy",
+  "description": "Deploy projects to Vercel, Netlify, or GitHub Pages",
+  "version": "1.0.0",
+  "author": "OpenClaw",
+  "metadata": {
+    "requires": {
+      "bins": ["node"]
+    }
+  },
+  "skills": ["deployment", "vercel", "github-pages"],
+  "commands": [
+    {
+      "name": "deploy",
+      "description": "Deploy a project to a hosting platform",
+      "usage": "node {baseDir}/scripts/deploy.mjs <platform> <dir> [--options]"
+    }
+  ]
+}

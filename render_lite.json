@@ -1,0 +1,17 @@
+{
+  "envVars": [
+    {
+      "key": "TELEGRAM_BOT_TOKEN",
+      "value": "8455353239:AAHMxK1y--esr3d_0I5UxBCHnhLy0xglo94"
+    },
+    {
+      "key": "OPENCLAW_WALLET",
+      "value": "0xe23d9C5422A8bdB5281b15596111814808f98F1A"
+    }
+  ],
+  "serviceDetails": {
+    "envSpecificDetails": {
+      "dockerCommand": "node openclaw.mjs gateway --port $PORT --bind 0.0.0.0 --allow-unconfigured --channel telegram"
+    }
+  }
+}

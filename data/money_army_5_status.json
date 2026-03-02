@@ -1,0 +1,46 @@
+{
+  "army_name": "MONEY ARMY 5",
+  "status": "ACTIVE",
+  "mode": "24/7_AUTONOMOUS",
+  "mission": "Continuous income generation",
+  "wallet": {
+    "address": "0xe23d9C5422A8bdB5281b15596111814808f98F1A",
+    "network": "Ethereum",
+    "view_url": "https://etherscan.io/address/0xe23d9C5422A8bdB5281b15596111814808f98F1A"
+  },
+  "scripts_created": [
+    "wallet_monitor.ps1",
+    "reddit_money_poster.ps1",
+    "craigslist_money_poster.ps1",
+    "income_finder.ps1",
+    "quick_money.ps1",
+    "affiliate_blast.ps1",
+    "crypto_monitor.ps1",
+    "money_army_master.ps1",
+    "income_report.ps1"
+  ],
+  "tasks": {
+    "reddit_posting": "Every hour - scripts/reddit_money_poster.ps1",
+    "craigslist_posting": "Every hour - scripts/craigslist_money_poster.ps1",
+    "wallet_check": "Every 30 min - scripts/wallet_monitor.ps1",
+    "income_scanning": "Every hour - scripts/income_finder.ps1"
+  },
+  "income_streams": [
+    "UserTesting.com - USD 10-60/test",
+    "Prolific.co - USD 6-12/hour",
+    "Appen.com - USD 10-25/hour",
+    "Fiverr.com - USD 5-500/gig",
+    "Upwork.com - USD 15-100/hour",
+    "Honeygain - USD 20-50/month passive",
+    "PacketStream - USD 5-30/month passive",
+    "Etsy digital products",
+    "Medium writing",
+    "Amazon Associates affiliate"
+  ],
+  "potential_income": {
+    "conservative": "USD 500-1000/month",
+    "optimized": "USD 2000-5000/month",
+    "maximum": "USD 10000+/month"
+  },
+  "last_update": "2026-02-23T20:52:00Z"
+}

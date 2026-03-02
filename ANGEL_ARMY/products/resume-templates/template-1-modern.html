@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Professional Resume</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .name {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .title {
+            font-size: 18px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        .content {
+            padding: 40px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+        }
+        .icon {
+            width: 20px;
+            text-align: center;
+        }
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+        }
+        .experience-header, .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+        .company, .school {
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+        }
+        .date {
+            color: #999;
+            font-size: 14px;
+        }
+        .position, .degree {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+        .description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .description li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .description li::before {
+            content: "▸";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #555;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .skill-tag:hover {
+            border-color: #667eea;
+            background: #f8f8ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="name">JOHN DOE</div>
+            <div class="title">Marketing Manager</div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Contact</div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <span>john.doe@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>New York, NY</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">🔗</span>
+                        <span>linkedin.com/in/johndoe</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Professional Summary</div>
+                <div class="description">
+                    Results-driven marketing manager with 5+ years of experience developing and executing successful digital marketing strategies. Proven track record of increasing brand awareness by 40% and driving revenue growth through data-driven campaigns and innovative content marketing.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experience</div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="company">TechCorp Inc.</div>
+                        <div class="date">2021 - Present</div>
+                    </div>
+                    <div class="position">Senior Marketing Manager</div>
+                    <div class="description">
+                        <ul>
+                            <li>Led a team of 5 marketers to execute integrated marketing campaigns</li>
+                            <li>Increased lead generation by 150% through SEO and content marketing</li>
+                            <li>Managed $500K annual marketing budget with 95% efficiency</li>
+                            <li>Launched successful email marketing program with 45% open rate</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="company">StartUpXYZ</div>
+                        <div class="date">2019 - 2021</div>
+                    </div>
+                    <div class="position">Marketing Specialist</div>
+                    <div class="description">
+                        <ul>
+                            <li>Developed and managed social media strategy across 5 platforms</li>
+                            <li>Grew Instagram following from 1K to 50K in 12 months</li>
+                            <li>Created compelling content that drove 200% increase in engagement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Education</div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="school">University of Technology</div>
+                        <div class="date">2015 - 2019</div>
+                    </div>
+                    <div class="degree">Bachelor of Science in Marketing</div>
+                    <div class="description">GPA: 3.8/4.0 | Dean's List | Marketing Club President</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="skills-grid">
+                    <span class="skill-tag">Digital Marketing</span>
+                    <span class="skill-tag">SEO/SEM</span>
+                    <span class="skill-tag">Content Strategy</span>
+                    <span class="skill-tag">Social Media</span>
+                    <span class="skill-tag">Analytics</span>
+                    <span class="skill-tag">Email Marketing</span>
+                    <span class="skill-tag">Google Ads</span>
+                    <span class="skill-tag">Team Leadership</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Clean Resume</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .resume {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+        }
+        .name {
+            font-size: 40px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 16px;
+            color: #666;
+            font-weight: 400;
+        }
+        .contact-line {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        .sidebar {
+            padding-right: 20px;
+        }
+        .main {
+            padding-left: 20px;
+            border-left: 1px solid #ddd;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        .skill-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .skill-bar {
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+        }
+        .skill-level {
+            height: 100%;
+            background: #333;
+            border-radius: 2px;
+        }
+        .experience-item {
+            margin-bottom: 25px;
+        }
+        .job-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .company {
+            font-style: italic;
+            color: #666;
+            margin: 3px 0;
+        }
+        .date {
+            font-size: 13px;
+            color: #999;
+        }
+        .description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .education-item {
+            margin-bottom: 15px;
+        }
+        .degree {
+            font-weight: 600;
+        }
+        .school {
+            color: #666;
+            font-size: 14px;
+        }
+        .cert-list {
+            list-style: none;
+        }
+        .cert-list li {
+            padding: 5px 0;
+            font-size: 14px;
+        }
+        .cert-list li::before {
+            content: "✓";
+            margin-right: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <div class="header">
+            <div class="name">Jane Smith</div>
+            <div class="title">UX Designer</div>
+            <div class="contact-line">
+                jane.smith@email.com | (555) 987-6543 | San Francisco, CA
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="section">
+                    <div class="section-title">Skills</div>
+                    <div class="skill-item">
+                        <div class="skill-name">UI/UX Design</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Figma</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Adobe XD</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Prototyping</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 88%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">User Research</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Languages</div>
+                    <div class="skill-item">
+                        <div class="skill-name">English (Native)</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 100%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Spanish</div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 70%"></div></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Certifications</div>
+                    <ul class="cert-list">
+                        <li>Google UX Certificate</li>
+                        <li>Adobe Certified Expert</li>
+                        <li>Scrum Master</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Education</div>
+                    <div class="education-item">
+                        <div class="degree">BFA Design</div>
+                        <div class="school">Art Institute</div>
+                        <div class="date">2018</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="section">
+                    <div class="section-title">Profile</div>
+                    <div class="description">
+                        Creative UX designer with 4+ years of experience crafting intuitive digital experiences. Passionate about user-centered design and creating solutions that are both beautiful and functional. Led redesign of flagship product increasing user engagement by 35%.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Experience</div>
+                    
+                    <div class="experience-item">
+                        <div class="job-title">Senior UX Designer</div>
+                        <div class="company">DesignWorks Agency</div>
+                        <div class="date">2021 - Present</div>
+                        <div class="description">
+                            Lead UX initiatives for enterprise clients. Conduct user research, create wireframes, and deliver high-fidelity prototypes. Manage design system used by 50+ developers.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">UX Designer</div>
+                        <div class="company">TechStart Inc.</div>
+                        <div class="date">2019 - 2021</div>
+                        <div class="description">
+                            Designed mobile and web applications for startup clients. Increased conversion rates by 25% through A/B testing and iterative design improvements.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Junior Designer</div>
+                        <div class="company">Creative Studio</div>
+                        <div class="date">2018 - 2019</div>
+                        <div class="description">
+                            Created visual designs for marketing materials and websites. Collaborated with development teams to ensure design fidelity.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Projects</div>
+                    <div class="experience-item">
+                        <div class="job-title">E-commerce App Redesign</div>
+                        <div class="description">
+                            Complete redesign of mobile shopping experience. Resulted in 40% increase in checkout completion and 4.8 star app rating.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

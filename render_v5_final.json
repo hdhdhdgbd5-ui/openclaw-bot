@@ -1,0 +1,7 @@
+{
+  "serviceDetails": {
+    "envSpecificDetails": {
+      "dockerCommand": "node openclaw.mjs gateway --port 8080 --bind 0.0.0.0 --allow-unconfigured"
+    }
+  }
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoGenius - AI Video Script & Content Creator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #dc2626 0%, #7c2d12 100%); min-height: 100vh; color: white; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 40px 0; }
+        .header h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .card { background: white; color: #1f2937; border-radius: 20px; padding: 40px; margin: 20px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        textarea { width: 100%; min-height: 120px; padding: 15px; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 1em; font-family: inherit; resize: vertical; }
+        .btn { background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 1em; margin: 10px 5px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .hidden { display: none !important; }
+        .script-box { background: #f9fafb; border-left: 4px solid #dc2626; padding: 20px; margin: 15px 0; border-radius: 8px; }
+        .hook { background: #fef2f2; border: 2px solid #fecaca; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .cta { background: #dc2626; color: white; padding: 15px; border-radius: 8px; text-align: center; margin: 15px 0; }
+        .tag { display: inline-block; background: #dc2626; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="font-size: 3em;">🎬</div>
+            <h1>VideoGenius</h1>
+            <p>AI-Powered Video Scripts, Hooks & Thumbnails</p>
+        </div>
+
+        <!-- Input Form -->
+        <div id="inputSection" class="card">
+            <h2 style="margin-bottom: 20px;">Create Viral Video Content</h2>
+
+            <div style="margin: 15px 0;">
+                <label>What is your video about?</label>
+                <textarea id="topic" placeholder="e.g., How I made $10k in 30 days with AI side hustles..."></textarea>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Video Platform</label>
+                <select id="platform" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1em;">
+                    <option value="youtube">YouTube</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="instagram">Instagram Reels</option>
+                    <option value="twitter">Twitter/X</option>
+                </select>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Target Audience</label>
+                <select id="audience" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1em;">
+                    <option value="beginners">Beginners</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="professionals">Professionals</option>
+                </select>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="generateScript()">🎬 Generate Video Script</button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsSection" class="card hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <button class="btn" onclick="reset()" style="font-size: 0.9em;">← Back</button>
+                <h2>Your AI Video Content</h2>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>🎣 Hook (First 3 Seconds)</h3>
+                <div class="hook">
+                    <strong>"I just discovered something that nobody is talking about..."</strong>
+                    <p style="margin-top: 10px; color: #6b7280; font-size: 0.9em;">AI Analysis: This creates curiosity gap + exclusivity. High retention potential.</p>
+                </div>
+
+                <div class="hook">
+                    <strong>"Stop what you're doing and watch this..."</strong>
+                    <p style="margin-top: 10px; color: #6b7280; font-size: 0.9em;">AI Analysis: Pattern interrupt hook. Works best for TikTok/Reels.</p>
+                </div>
+
+                <div class="hook">
+                    <strong>"This cost me $10,000 to learn, but I'm sharing it free..."</strong>
+                    <p style="margin-top: 10px; color: #6b7280; font-size: 0.9em;">AI Analysis: Value proposition + loss aversion. High engagement for tutorials.</p>
+                </div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>📜 Full Script (2-3 minutes)</h3>
+                
+                <div class="script-box">
+                    <strong>[0:00-0:03] HOOK</strong><br>
+                    "I just discovered something that nobody is talking about, and it changed everything for me..."
+                </div>
+
+                <div class="script-box">
+                    <strong>[0:03-0:15] SETUP</strong><br>
+                    "For months, I was struggling to [pain point]. I tried everything - [method 1], [method 2], even [method 3]. Nothing worked."
+                </div>
+
+                <div class="script-box">
+                    <strong>[0:15-0:45] STORY/AHA MOMENT</strong><br>
+                    "But then I discovered [the solution/secret]. Here's what happened..." [Transition to value/lesson]
+                </div>
+
+                <div class="script-box">
+                    <strong>[0:45-2:00] MAIN CONTENT</strong><br>
+                    • Point 1: [First key takeaway]<br>
+                    • Point 2: [Second key takeaway] <br>
+                    • Point 3: [Third key takeaway]
+                </div>
+
+                <div class="script-box">
+                    <strong>[2:00-2:30] PROOF/SOCIAL PROOF</strong><br>
+                    "Since implementing this, I've [result]. And I'm not the only one - thousands of others are seeing the same results."
+                </div>
+
+                <div class="cta">
+                    <strong>[2:30-3:00] CTA</strong><br>
+                    "If you want [desired outcome], make sure to [action]. Drop a like if this helped you, and follow for more videos like this!"
+                </div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>🎨 Thumbnail Ideas</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0;">
+                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2em;">😱</div>
+                        <strong>Shocked Face</strong><br>
+                        <span style="font-size: 0.8em; color: #6b7280;">High CTR</span>
+                    </div>
+                    
+                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2em;">💰</div>
+                        <strong>Money/Results</strong><br>
+                        <span style="font-size: 0.8em; color: #6b7280;">Proof-based</span>
+                    </div>
+                    
+                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2em;">❓</div>
+                        <strong>Question Mark</strong><br>
+                        <span style="font-size: 0.8em; color: #6b7280;">Curiosity</span>
+                    </div>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <strong>Thumbnail Text Combo:</strong><br>
+                    <span class="tag">"I WISH I KNEW THIS"</span>
+                    <span class="tag">"FREE METHOD"</span>
+                    <span class="tag">"2024"</span>
+                    <span class="tag">"WORKS!"</span>
+                </div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>#️⃣ Recommended Hashtags</h3>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="tag">#Tutorial</span>
+                    <span class="tag">#HowTo</span>
+                    <span class="tag">#Viral</span>
+                    <span class="tag">#Tips</span>
+                    <span class="tag">#ContentCreator</span>
+                    <span class="tag">#AI</span>
+                    <span class="tag">#SideHustle</span>
+                    <span class="tag">#MakeMoneyOnline</span>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px;">
+                <h3>Get Unlimited Video Scripts</h3>
+                <p style="margin: 15px 0;">50+ templates, AI thumbnail generator, viral hook database, trend alerts</p>
+                
+                <div style="margin: 20px 0;">
+                    <div style="font-size: 2.5em; font-weight: bold;">$29</div>
+                    <div>/month unlimited</div>
+                </div>
+                
+                <button style="background: white; color: #dc2626; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer;" onclick="window.open('https://ko-fi.com/tezfiles', '_blank')">☕ Support on Ko-fi - $29/mo</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; opacity: 0.9; margin-top: 40px;">
+            <p>VideoGenius © 2024 • Built by Angel Army</p>
+        </div>
+    </div>
+
+    <script>
+        function generateScript() {
+            const topic = document.getElementById('topic').value;
+            if (!topic) {
+                alert('Please enter a video topic');
+                return;
+            }
+            document.getElementById('inputSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+        }
+
+        function reset() {
+            document.getElementById('resultsSection').classList.add('hidden');
+            document.getElementById('inputSection').classList.remove('hidden');
+            document.getElementById('topic').value = '';
+        }
+    </script>
+</body>
+</html>

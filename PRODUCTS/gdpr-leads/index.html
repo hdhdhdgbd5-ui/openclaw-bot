@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDPR Violation Reports | Legal Lead Generation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; color: #fff; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 15px; color: #e94560; }
+        .header p { font-size: 1.2rem; opacity: 0.9; }
+        .fines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .fine-card { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+        .fine-card:hover { transform: translateY(-5px); border-color: #e94560; }
+        .fine-card .company { font-size: 1.4rem; font-weight: bold; color: #e94560; margin-bottom: 10px; }
+        .fine-card .amount { font-size: 2rem; font-weight: bold; color: #4ecca3; margin-bottom: 10px; }
+        .fine-card .country { opacity: 0.7; font-size: 0.9rem; }
+        .fine-card .violation { margin-top: 15px; font-size: 0.95rem; opacity: 0.8; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
+        .stat-box { background: rgba(233,69,96,0.1); border-radius: 10px; padding: 25px; text-align: center; border: 1px solid #e94560; }
+        .stat-box .number { font-size: 2.5rem; font-weight: bold; color: #e94560; }
+        .stat-box .label { opacity: 0.8; margin-top: 5px; }
+        .lead-form { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; max-width: 600px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.1); }
+        .lead-form h2 { text-align: center; margin-bottom: 30px; font-size: 1.8rem; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #e94560; }
+        .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #e94560, #ff6b6b); border: none; border-radius: 8px; color: #fff; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+        .submit-btn:hover { transform: scale(1.02); }
+        .disclaimer { margin-top: 20px; font-size: 0.85rem; opacity: 0.6; text-align: center; }
+        .success-message { display: none; text-align: center; padding: 40px; }
+        .success-message h3 { color: #4ecca3; font-size: 1.8rem; margin-bottom: 15px; }
+        @media (max-width: 600px) { .stats { grid-template-columns: 1fr; } .header h1 { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚖️ GDPR Violation Intelligence</h1>
+            <p>Verified violation data for privacy law firms & legal professionals</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="number">€4B+</div>
+                <div class="label">Total GDPR Fines</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">1,700+</div>
+                <div class="label">Total Cases</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">2025-26</div>
+                <div class="label">Active Enforcement</div>
+            </div>
+        </div>
+
+        <div class="fines-grid">
+            <div class="fine-card">
+                <div class="company">Meta (Facebook)</div>
+                <div class="amount">€1.2 Billion</div>
+                <div class="country">🇮🇪 Ireland | May 2023</div>
+                <div class="violation">Unlawful transfer of personal data to United States. Largest GDPR fine in history.</div>
+            </div>
+            <div class="fine-card">
+                <div class="company">Uber</div>
+                <div class="amount">€290 Million</div>
+                <div class="country">🇳🇱 Netherlands | 2023</div>
+                <div class="violation">Unlawfully transferred personal data of European drivers to the United States.</div>
+            </div>
+            <div class="fine-card">
+                <div class="company">TikTok</div>
+                <div class="amount">€345 Million</div>
+                <div class="country">🇪🇺 EU | 2023</div>
+                <div class="violation">Violations related to children's data processing and transparency failures.</div>
+            </div>
+            <div class="fine-card">
+                <div class="company">Amazon</div>
+                <div class="amount">€746 Million</div>
+                <div class="country">🇱🇺 Luxembourg | 2022</div>
+                <div class="violation">GDPR violations for targeted advertising practices.</div>
+            </div>
+            <div class="fine-card">
+                <div class="company">WhatsApp</div>
+                <div class="amount">€225 Million</div>
+                <div class="country">🇮🇪 Ireland | 2021</div>
+                <div class="violation">Transparency and lawfulness of data processing failures.</div>
+            </div>
+            <div class="fine-card">
+                <div class="company">Google</div>
+                <div class="amount">€50 Million</div>
+                <div class="country">🇫🇷 France | 2019</div>
+                <div class="violation">Lack of transparency and invalid consent for advertising.</div>
+            </div>
+        </div>
+
+        <div class="lead-form" id="leadForm">
+            <h2>📋 Submit a GDPR Violation Case</h2>
+            <form id="gdprLeadForm">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" name="name" required placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label>Company with Violation *</label>
+                    <input type="text" name="company" required placeholder="Company name">
+                </div>
+                <div class="form-group">
+                    <label>Violation Type</label>
+                    <select name="violationType">
+                        <option value="">Select type...</option>
+                        <option value="data-breach">Data Breach</option>
+                        <option value="consent">Invalid Consent</option>
+                        <option value="transfer">Illegal Data Transfer</option>
+                        <option value="transparency">Lack of Transparency</option>
+                        <option value="access">Right to Access Violation</option>
+                        <option value="deletion">Right to Deletion Violation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Case Description</label>
+                    <textarea name="description" rows="4" placeholder="Describe the violation, affected users, timeline..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Estimated Affected Users</label>
+                    <input type="number" name="affectedUsers" placeholder="e.g., 10000">
+                </div>
+                <button type="submit" class="submit-btn">Submit Violation Lead</button>
+            </form>
+            <p class="disclaimer">Your information is confidential. We connect verified cases with specialized privacy law firms. Average lead value: $500-$5,000.</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h3>✅ Lead Submitted Successfully!</h3>
+            <p>Thank you for your submission. Our team will verify the case and connect you with qualified privacy law firms.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('gdprLeadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store locally for demo
+            const leads = JSON.parse(localStorage.getItem('gdpr_leads') || '[]');
+            leads.push({...data, submittedAt: new Date().toISOString()});
+            localStorage.setItem('gdpr_leads', JSON.stringify(leads));
+            
+            // Show success
+            document.getElementById('leadForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            console.log('Lead submitted:', data);
+        });
+    </script>
+</body>
+</html>

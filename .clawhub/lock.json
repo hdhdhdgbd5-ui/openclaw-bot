@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "sonoscli": {
+      "version": "1.0.0",
+      "installedAt": 1771452343683
+    },
+    "tavily-search": {
+      "version": "1.0.0",
+      "installedAt": 1771539848168
+    },
+    "stealth-browser": {
+      "version": "1.0.0",
+      "installedAt": 1771732811034
+    },
+    "agent-browser-stagehand": {
+      "version": "1.0.0",
+      "installedAt": 1771685162169
+    },
+    "agent-browser-clawdbot": {
+      "version": "0.1.0",
+      "installedAt": 1771685188510
+    },
+    "tavily-search-pro": {
+      "version": "1.0.0",
+      "installedAt": 1771706355698
+    },
+    "vercel": {
+      "version": "1.0.1",
+      "installedAt": 1771809188874
+    },
+    "coolify": {
+      "version": "2.1.1",
+      "installedAt": 1771732316444
+    },
+    "browser-automation-stealth": {
+      "version": "1.0.0",
+      "installedAt": 1771732819475
+    },
+    "accountcreator": {
+      "version": "1.0.0",
+      "installedAt": 1771732868386
+    },
+    "a2a-agent-signup": {
+      "version": "1.2.4",
+      "installedAt": 1771732874960
+    },
+    "venice-router": {
+      "version": "1.5.0",
+      "installedAt": 1771806202031
+    },
+    "reddit": {
+      "version": "1.0.0",
+      "installedAt": 1771809195964
+    },
+    "oauth-helper": {
+      "version": "1.1.0",
+      "installedAt": 1771809647126
+    },
+    "fast-browser-use": {
+      "version": "1.0.5",
+      "installedAt": 1771810041299
+    }
+  }
+}

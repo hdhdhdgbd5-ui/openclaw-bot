@@ -1,0 +1,17 @@
+{
+  "envVars": [
+    {
+      "key": "OPENCLAW_JSON",
+      "value": "{\"channels\":{\"telegram\":{\"enabled\":true,\"botToken\":\"8455353239:AAHMxK1y--esr3d_0I5UxBCHnhLy0xglo94\"}},\"gateway\":{\"auth\":{\"token\":\"3465e428d44745e8bff6aed6d6d33d3e935fe673762a414a\"}}}"
+    },
+    {
+      "key": "PORT",
+      "value": "8080"
+    }
+  ],
+  "serviceDetails": {
+    "envSpecificDetails": {
+      "dockerCommand": ""
+    }
+  }
+}

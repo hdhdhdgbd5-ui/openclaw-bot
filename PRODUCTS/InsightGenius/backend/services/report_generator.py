@@ -1,0 +1,207 @@
+"""
+Report Generator Service
+Handles PDF and PowerPoint export generation
+"""
+
+import os
+from typing import Dict, List
+from datetime import datetime
+import pandas as pd
+
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image, PageBreak
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
+
+from pptx import Presentation
+from pptx.util import Inches, Pt
+from pptx.enum.text import PP_ALIGN
+from pptx.dml.color import RGBColor
+
+from core.logging import logger
+
+class ReportGeneratorService:
+    """Service for generating PDF and PowerPoint reports"""
+    
+    def __init__(self):
+        self.reports_dir = "generated_reports"
+        os.makedirs(self.reports_dir, exist_ok=True)
+    
+    async def generate(self, report, format: str = "pdf") -> str:
+        """Generate report in specified format"""
+        try:
+            if format == "pdf":
+                return await self._generate_pdf(report)
+            elif format == "pptx":
+                return await self._generate_pptx(report)
+            elif format == "excel":
+                return await self._generate_excel(report)
+            else:
+                raise ValueError(f"Unsupported format: {format}")
+        except Exception as e:
+            logger.error(f"Report generation failed: {e}")
+            raise
+    
+    async def _generate_pdf(self, report) -> str:
+        """Generate PDF report"""
+        filename = f"{self.reports_dir}/report_{report.id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+        
+        doc = SimpleDocTemplate(
+            filename,
+            pagesize=A4,
+            rightMargin=72,
+            leftMargin=72,
+            topMargin=72,
+            bottomMargin=18
+        )
+        
+        # Styles
+        styles = getSampleStyleSheet()
+        title_style = ParagraphStyle(
+            'CustomTitle',
+            parent=styles['Heading1'],
+            fontSize=24,
+            textColor=colors.HexColor('#1e40af'),
+            spaceAfter=30,
+            alignment=TA_CENTER
+        )
+        
+        story = []
+        
+        # Cover page
+        story.append(Spacer(1, 2*inch))
+        story.append(Paragraph(report.name, title_style))
+        story.append(Spacer(1, 0.5*inch))
+        
+        if report.description:
+            story.append(Paragraph(report.description, styles["Normal"]))
+        
+        story.append(Spacer(1, 1*inch))
+        story.append(Paragraph(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles["Normal"]))
+        story.append(Paragraph(f"By: InsightGenius", styles["Normal"]))
+        
+        story.append(PageBreak())
+        
+        # Executive Summary
+        story.append(Paragraph("Executive Summary", styles["Heading2"]))
+        story.append(Spacer(1, 0.2*inch))
+        story.append(Paragraph("This report provides comprehensive analysis of the requested data.", styles["Normal"]))
+        
+        story.append(PageBreak())
+        
+        # Sections
+        for section in report.sections:
+            story.append(Paragraph(section.get("title", "Section"), styles["Heading2"]))
+            story.append(Spacer(1, 0.2*inch))
+            
+            if "content" in section:
+                story.append(Paragraph(section["content"], styles["Normal"]))
+            
+            # Add table if data present
+            if "data" in section and section["data"]:
+                data = section["data"]
+                if isinstance(data, list) and len(data) > 0:
+                    # Create table
+                    headers = list(data[0].keys())
+                    table_data = [headers]
+                    for row in data[:20]:  # Limit to 20 rows
+                        table_data.append([str(row.get(h, "")) for h in headers])
+                    
+                    table = Table(table_data)
+                    table.setStyle(TableStyle([
+                        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                        ('FONTSIZE', (0, 0), (-1, 0), 14),
+                        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                        ('GRID', (0, 0), (-1, -1), 1, colors.black)
+                    ]))
+                    story.append(table)
+            
+            story.append(Spacer(1, 0.3*inch))
+        
+        # Footer
+        story.append(Spacer(1, 1*inch))
+        branding = report.branding or {}
+        footer_text = branding.get("footer_text", "Generated by InsightGenius")
+        story.append(Paragraph(footer_text, styles["Normal"]))
+        
+        doc.build(story)
+        
+        return filename
+    
+    async def _generate_pptx(self, report) -> str:
+        """Generate PowerPoint presentation"""
+        filename = f"{self.reports_dir}/report_{report.id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pptx"
+        
+        prs = Presentation()
+        
+        # Title slide
+        title_slide_layout = prs.slide_layouts[0]
+        slide = prs.slides.add_slide(title_slide_layout)
+        title = slide.shapes.title
+        subtitle = slide.placeholders[1]
+        
+        title.text = report.name
+        subtitle.text = f"Generated: {datetime.now().strftime('%Y-%m-%d')}\n{report.description or ''}"
+        
+        # Content slides
+        for section in report.sections:
+            content_slide_layout = prs.slide_layouts[1]
+            slide = prs.slides.add_slide(content_slide_layout)
+            
+            shapes = slide.shapes
+            title_shape = shapes.title
+            body_shape = shapes.placeholders[1]
+            
+            title_shape.text = section.get("title", "Section")
+            
+            tf = body_shape.text_frame
+            tf.text = section.get("content", "")
+            
+            # Add bullet points if insights available
+            if "insights" in section:
+                for insight in section["insights"]:
+                    p = tf.add_paragraph()
+                    p.text = insight
+                    p.level = 1
+        
+        # Summary slide
+        summary_slide_layout = prs.slide_layouts[1]
+        slide = prs.slides.add_slide(summary_slide_layout)
+        shapes = slide.shapes
+        title_shape = shapes.title
+        body_shape = shapes.placeholders[1]
+        
+        title_shape.text = "Summary"
+        body_shape.text_frame.text = "Key findings and recommendations based on the analysis."
+        
+        prs.save(filename)
+        
+        return filename
+    
+    async def _generate_excel(self, report) -> str:
+        """Generate Excel report"""
+        filename = f"{self.reports_dir}/report_{report.id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
+        
+        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+            # Summary sheet
+            summary_df = pd.DataFrame({
+                "Report Name": [report.name],
+                "Generated": [datetime.now().strftime('%Y-%m-%d %H:%M')],
+                "Description": [report.description or ""]
+            })
+            summary_df.to_excel(writer, sheet_name='Summary', index=False)
+            
+            # Data sheets
+            for i, section in enumerate(report.sections):
+                if "data" in section and section["data"]:
+                    sheet_name = section.get("title", f"Section_{i+1}")[:31]  # Excel sheet name limit
+                    df = pd.DataFrame(section["data"])
+                    df.to_excel(writer, sheet_name=sheet_name, index=False)
+        
+        return filename

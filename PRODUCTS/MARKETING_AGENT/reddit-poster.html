@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reddit Auto-Poster</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a2e; color: white; padding: 20px; }
+        .post { background: #16213e; padding: 15px; margin: 10px 0; border-radius: 10px; }
+        .title { font-weight: bold; color: #60a5fa; }
+        .body { margin-top: 10px; font-size: 14px; }
+        .btn { background: #6366f1; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .btn:hover { background: #4f46e5; }
+        textarea { width: 100%; height: 60px; background: #1e293b; color: white; border: 1px solid #475569; padding: 10px; margin-top: 5px; }
+        .timer { color: #fbbf24; font-size: 24px; text-align: center; margin: 20px 0; }
+        .queue { background: #0f172a; padding: 10px; border-radius: 5px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Reddit Marketing Agent</h1>
+    
+    <div class="timer">⏱️ Next post: <span id="timer">00:00</span></div>
+    
+    <div style="display: flex; gap: 10px; margin: 20px 0;">
+        <button class="btn" onclick="startAgent()">▶️ START AUTO-POSTING</button>
+        <button class="btn" onclick="stopAgent()">⏹️ STOP</button>
+        <button class="btn" onclick="queueAll()">📋 Queue All Posts</button>
+    </div>
+
+    <div id="posts"></div>
+
+    <script>
+        const redditPosts = [
+            {
+                product: "RentVault",
+                subreddits: ["personalfinance", "renters", "povertyfinance"],
+                titles: [
+                    "I lost my $1800 deposit. Then I built an app to make sure it never happens again",
+                    "Landlords took $1800 from me. Now I help renters protect themselves",
+                    "Built a free app to document rental condition after losing my deposit"
+                ],
+                body: `Last year my landlord kept my entire deposit claiming "damage" that was there when I moved in.
+
+I built RentVault - a dead-simple web app:
+• Room-by-room photo documentation
+• Auto-timestamped evidence  
+• PDF export for disputes
+• Works offline
+• FREE forever
+
+Try it: [URL]
+
+Questions welcome!`
+            },
+            {
+                product: "StreakVault",
+                subreddits: ["getdisciplined", "habits", "productivity"],
+                titles: [
+                    "I built a habit tracker that actually works (after failing with all the others)",
+                    "47 days streak on my workout. This app made it happen",
+                    "Simple streak counter for people who hate complex apps"
+                ],
+                body: `Tried every habit app. Abandoned them all.
+
+Built StreakVault - stupid simple:
+🔥 Visual streak counter
+⚡ One-tap completion
+📊 Progress export
+💯 Free forever
+
+I'm on day 47 of workouts. Works.
+
+Try it: [URL]
+
+What's your streak?`
+            },
+            {
+                product: "FocusMaster",
+                subreddits: ["productivity", "StudyWithMe", "ADHD"],
+                titles: [
+                    "Can you stay off your phone for 2 minutes? Most can't.",
+                    "I made a game that literally rewards you for not using your phone",
+                    "2-minute focus challenge - my streak is 23 days"
+                ],
+                body: `Don't touch your phone for 2 minutes.
+Sounds easy. Most fail.
+
+FocusMaster makes it a game:
+🚀 2-minute timer
+✅ Earn coins for completing
+💎 Watch ad for double rewards
+🏆 Build streaks
+🔥 Compete on leaderboard
+
+Can you beat my streak? (23 days)
+
+Try it: [URL]
+
+Free, ad-supported.`
+            },
+            {
+                product: "BudgetVault",
+                subreddits: ["personalfinance", "povertyfinance", "YNAB"],
+                titles: [
+                    "Free alternative to expensive budgeting apps",
+                    "I was tired of $84/year for budgeting. Built free alternative",
+                    "No bank connection needed - simple budget tracker"
+                ],
+                body: `$84/year for budgeting? Too much.
+
+Built BudgetVault - completely free:
+💰 Track income & expenses
+📊 Category breakdown
+📋 CSV export
+🔒 Works offline
+
+No bank sync. Manual entry. Your privacy.
+
+Try it: [URL]`
+            }
+        ];
+
+        let currentQueue = [];
+        let timer = null;
+        let countdown = 0;
+
+        function renderPosts() {
+            const container = document.getElementById('posts');
+            container.innerHTML = redditPosts.map((post, i) => `
+                <div class="post">
+                    <div class="title">${post.product} → r/${post.subreddits.join(', ')}</div>
+                    <div style="margin: 10px 0;">
+                        ${post.titles.map(t => `
+                            <div style="font-size: 13px; color: #94a3b8; margin: 5px 0;">• ${t}</div>
+                        `).join('')}
+                    </div>
+                    <textarea readonly>${post.body}</textarea>
+                    <button class="btn" onclick="queuePost(${i})">➕ Add to Queue</button>
+                    <button class="btn" onclick="copyPost(${i})">📋 Copy to Clipboard</button>
+                </div>
+            `).join('');
+        }
+
+        function queuePost(index) {
+            const post = redditPosts[index];
+            post.subreddits.forEach(sub => {
+                currentQueue.push({
+                    ...post,
+                    subreddit: sub,
+                    title: post.titles[Math.floor(Math.random() * post.titles.length)]
+                });
+            });
+            updateQueueDisplay();
+        }
+
+        function queueAll() {
+            redditPosts.forEach((_, i) => queuePost(i));
+        }
+
+        function updateQueueDisplay() {
+            const queueDiv = document.querySelector('.queue') || document.createElement('div');
+            queueDiv.className = 'queue';
+            queueDiv.innerHTML = `
+                <strong>📤 Queue (${currentQueue.length} posts ready)</strong><br/>
+                ${currentQueue.map(q => `
+                    <div style="font-size: 12px; color: #94a3b8;">${q.product} → r/${q.subreddit}</div>
+                `).join('')}
+            `;
+            document.body.appendChild(queueDiv);
+        }
+
+        function copyPost(index) {
+            const post = redditPosts[index];
+            const text = `TITLE:\n${post.titles[0]}\n\nBODY:\n${post.body}`;
+            navigator.clipboard.writeText(text);
+            alert('Copied to clipboard! Go paste on Reddit.');
+        }
+
+        function startAgent() {
+            countdown = 240; // 4 hours between posts
+            timer = setInterval(() => {
+                countdown--;
+                const mins = Math.floor(countdown / 60);
+                const secs = countdown % 60;
+                document.getElementById('timer').textContent = 
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                
+                if (countdown <= 0) {
+                    if (currentQueue.length > 0) {
+                        const post = currentQueue.shift();
+                        notifyPost(post);
+                    }
+                    countdown = 240;
+                }
+            }, 1000);
+            alert('Agent started! Check every 4 hours for next post.');
+        }
+
+        function stopAgent() {
+            clearInterval(timer);
+            document.getElementById('timer').textContent = '00:00';
+        }
+
+        function notifyPost(post) {
+            alert(`🚨 NEXT POST READY:\n\n${post.product} → r/${post.subreddit}\n\nTitle: ${post.title}\n\n(Copied to clipboard - go paste now!)`);
+            navigator.clipboard.writeText(post.body);
+        }
+
+        renderPosts();
+    </script>
+</body>
+</html>

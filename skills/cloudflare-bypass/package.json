@@ -1,0 +1,27 @@
+{
+  "name": "cloudflare-bypass",
+  "version": "1.0.0",
+  "description": "Bypass Cloudflare protection using stealth browser techniques",
+  "main": "scripts/stealth.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/launcher.mjs",
+    "test": "node scripts/launcher.mjs https://groq.com"
+  },
+  "keywords": [
+    "cloudflare",
+    "bypass",
+    "stealth",
+    "puppeteer",
+    "automation",
+    "anti-bot"
+  ],
+  "dependencies": {
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "puppeteer": "^21.6.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

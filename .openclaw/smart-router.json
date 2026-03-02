@@ -1,0 +1,28 @@
+{
+  "router": {
+    "mode": "intelligent",
+    "providers": [
+      { "name": "ollama-kimi", "priority": 1, "weight": 40 },
+      { "name": "groq", "priority": 2, "weight": 30 },
+      { "name": "cerebras", "priority": 3, "weight": 20 },
+      { "name": "groq-backup-1", "priority": 4, "weight": 5 },
+      { "name": "groq-backup-2", "priority": 5, "weight": 3 },
+      { "name": "groq-backup-3", "priority": 6, "weight": 2 }
+    ],
+    "rateLimitHandling": {
+      "strategy": "round-robin",
+      "cooldownSeconds": 60,
+      "maxRetries": 10,
+      "autoSwitch": true
+    },
+    "keys": {
+      "groq": [
+        "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",
+        "PLACEHOLDER_FOR_MORE_KEYS"
+      ],
+      "cerebras": [
+        "YOUR_CEREBRAS_API_KEY"
+      ]
+    }
+  }
+}

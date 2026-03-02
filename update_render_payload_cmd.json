@@ -1,0 +1,7 @@
+{
+  "serviceDetails": {
+    "envSpecificDetails": {
+      "dockerCommand": "node openclaw.mjs gateway --port $PORT --bind 0.0.0.0"
+    }
+  }
+}

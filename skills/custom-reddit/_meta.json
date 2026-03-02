@@ -1,0 +1,30 @@
+{
+  "name": "custom-reddit",
+  "description": "Browse, search, and post to Reddit using Playwright browser automation",
+  "version": "1.0.0",
+  "author": "OpenClaw",
+  "metadata": {
+    "requires": {
+      "bins": ["python"],
+      "python_packages": ["playwright"]
+    }
+  },
+  "skills": ["browser-automation", "reddit", "posting"],
+  "commands": [
+    {
+      "name": "posts",
+      "description": "Get posts from a subreddit",
+      "usage": "python {baseDir}/scripts/reddit_browser.py posts <subreddit> [--sort hot|new|top|rising] [--limit N]"
+    },
+    {
+      "name": "search", 
+      "description": "Search Reddit",
+      "usage": "python {baseDir}/scripts/reddit_browser.py search <query> [--subreddit <subreddit>] [--limit N]"
+    },
+    {
+      "name": "submit",
+      "description": "Submit a new post",
+      "usage": "python {baseDir}/scripts/reddit_browser.py submit <subreddit> --title <title> [--text <text>] [--url <url>]"
+    }
+  ]
+}

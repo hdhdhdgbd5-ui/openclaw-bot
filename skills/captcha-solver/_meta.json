@@ -1,0 +1,9 @@
+{
+  "skill": "captcha-solver",
+  "version": "1.0.0",
+  "description": "Solve numeric CAPTCHAs using AI vision",
+  "author": "Skills Army",
+  "tags": ["captcha", "solver", "ocr", "pinmx", "automation"],
+  "runtime": "node",
+  "entry": "scripts/captcha-solver.mjs"
+}

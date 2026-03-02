@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok GDPR Settlement - Claim Your Compensation</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #ff0050; text-align: center; } /* TikTok Brand Color */
+        .highlight { background: #ffeef2; padding: 15px; border-left: 5px solid #ff0050; margin: 20px 0; }
+        .btn { display: block; width: 100%; padding: 15px; background: #ff0050; color: white; text-align: center; text-decoration: none; border-radius: 5px; font-size: 1.2em; font-weight: bold; cursor: pointer; border: none; }
+        .btn:hover { background: #d40043; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TikTok GDPR Violation Claim</h1>
+        
+        <div class="highlight">
+            <h2>€530 Million GDPR Fine Issued!</h2>
+            <p>TikTok was fined €530 million by the EU for illegal data transfers to China and failing to protect children's data.</p>
+        </div>
+
+        <h3>Recent News:</h3>
+        <ul>
+            <li><strong>May 2023:</strong> TikTok fined €530M for GDPR violations (Data Transfers to China).</li>
+            <li><strong>Sept 2022:</strong> TikTok fined €345M for GDPR violations (Children's Data).</li>
+        </ul>
+
+        <div id="claimForm">
+            <h3>Check Your Eligibility & File Claim</h3>
+            <form id="tiktokForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label>Did you use TikTok before 2023?</label>
+                    <input type="radio" name="user" value="yes" checked> Yes
+                    <input type="radio" name="user" value="no"> No
+                </div>
+                <button type="submit" class="btn">File Claim Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('tiktokForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            console.log('Lead Captured:', data);
+            
+            const btn = this.querySelector('button');
+            btn.textContent = 'Submitting...';
+            
+            setTimeout(() => {
+                alert('Claim submitted successfully! A lawyer will contact you shortly.');
+                btn.textContent = 'File Claim Now';
+                this.reset();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

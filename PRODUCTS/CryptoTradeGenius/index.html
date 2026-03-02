@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoTradeGenius - AI Trading Signals</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: white; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 40px 0; }
+        .header h1 { font-size: 3em; background: linear-gradient(135deg, #10b981, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background: #1a1a1a; border-radius: 16px; padding: 24px; margin: 20px 0; border: 1px solid #333; }
+        .signal { display: flex; align-items: center; padding: 15px; margin: 10px 0; background: #1f2937; border-radius: 10px; border-left: 4px solid; }
+        .signal.buy { border-left-color: #10b981; }
+        .signal.sell { border-left-color: #ef4444; }
+        .signal.neutral { border-left-color: #6b7280; }
+        .btn { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 1em; }
+        .hidden { display: none !important; }
+        .stat { text-align: center; padding: 20px; }
+        .stat-value { font-size: 2.5em; font-weight: bold; }
+        .stat-value.pos { color: #10b981; }
+        .stat-value.neg { color: #ef4444; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .chart { height: 300px; background: linear-gradient(180deg, #10b981 0%, #1a1a1a 100%); border-radius: 10px; position: relative; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="font-size: 3em;">📈</div>
+            <h1>CryptoTradeGenius</h1>
+            <p style="color: #6b7280;">AI-Powered Trading Signals & Market Analysis</p>
+        </div>
+
+        <div class="grid">
+            <div class="card stat">
+                <div class="stat-value pos">+124%</div>
+                <p>Last 30 Days</p>
+            </div>
+            <div class="card stat">
+                <div class="stat-value">87%</div>
+                <p>Accuracy Rate</p>
+            </div>
+            <div class="card stat">
+                <div class="stat-value">2,847</div>
+                <p>Active Traders</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-bottom: 20px;">🔥 Live AI Trading Signals</h3>
+
+            <div class="signal buy">
+                <div style="font-size: 2em; margin-right: 15px;">🚀</div>
+                <div style="flex: 1;">
+                    <strong>$BTC / Bitcoin</strong><br>
+                    <span style="color: #6b7280;">Strong Buy Signal - AI Confidence: 94%</span>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: #10b981; font-weight: bold;">+5.2%</div>
+                    <span style="color: #6b7280; font-size: 0.9em;">Target: $52,400</span>
+                </div>
+            </div>
+
+            <div class="signal buy">
+                <div style="font-size: 2em; margin-right: 15px;">🚀</div>
+                <div style="flex: 1;">
+                    <strong>$ETH / Ethereum</strong><br>
+                    <span style="color: #6b7280;">Buy Signal - AI Confidence: 89%</span>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: #10b981; font-weight: bold;">+3.8%</div>
+                    <span style="color: #6b7280; font-size: 0.9em;">Target: $2,890</span>
+                </div>
+            </div>
+
+            <div class="signal sell">
+                <div style="font-size: 2em; margin-right: 15px;">🔻</div>
+                <div style="flex: 1;">
+                    <strong>$SOL / Solana</strong><br>
+                    <span style="color: #6b7280;">Sell Signal - Reached Target</span>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: #ef4444; font-weight: bold;">-2.1%</div>
+                    <span style="color: #6b7280; font-size: 0.9em;">Exit: $102.40</span>
+                </div>
+            </div>
+
+            <div class="signal neutral">
+                <div style="font-size: 2em; margin-right: 15px;">⏸️</div>
+                <div style="flex: 1;">
+                    <strong>$ADA / Cardano</strong><br>
+                    <span style="color: #6b7280;">Hold - Consolidation Phase</span>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: #6b7280; font-weight: bold;">+0.3%</div>
+                    <span style="color: #6b7280; font-size: 0.9em;">Wait</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📊 Market Sentiment Analysis</h3>
+            
+            <div style="margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>Fear & Greed Index</span>
+                    <span style="color: #10b981;">74 (Greed)</span>
+                </div>
+                <div style="background: #333; height: 10px; border-radius: 5px;">
+                    <div style="background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981); width: 74%; height: 100%; border-radius: 5px;"></div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+                <div style="background: #1f2937; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 0.9em; color: #6b7280;">BTC Dominance</div>
+                    <div style="font-size: 1.5em; font-weight: bold;">52.3%</div>
+                </div>
+                <div style="background: #1f2937; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 0.9em; color: #6b7280;">Total Cap</div>
+                    <div style="font-size: 1.5em; font-weight: bold;">$2.4T</div>
+                </div>
+                <div style="background: #1f2937; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 0.9em; color: #6b7280;">24h Volume</div>
+                    <div style="font-size: 1.5em; font-weight: bold;">$89B</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #10b981, #059669); padding: 30px; border-radius: 16px; text-align: center;">
+            <h3>Unlock Real-Time Signals</h3>
+            <p style="margin: 15px 0;">Get AI-powered signals, portfolio tracking, and risk alerts</p>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div>
+                    <div style="font-size: 2em; font-weight: bold;">$49</div>
+                    <div>/month</div>
+                </div>
+                <div>
+                    <div style="font-size: 2em; font-weight: bold;">$399</div>
+                    <div>/year</div>
+                </div>
+            </div>
+            
+            <button style="background: white; color: #10b981; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer; margin-top: 20px;">Start 7-Day Free Trial</button>
+        </div>
+
+        <div style="text-align: center; color: #64748b; margin-top: 40px; padding: 20px;">
+            <p>CryptoTradeGenius © 2024 • Built by Angel Army</p>
+            <p style="font-size: 0.8em;">Disclaimer: Not financial advice. Trade responsibly.</p>
+        </div>
+    </div>
+</body>
+</html>

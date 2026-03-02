@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContractGenius - AI Legal Contract Generator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1e3a8a, #3b82f6); min-height: 100vh; color: white; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 40px 0; }
+        .header h1 { font-size: 3em; margin-bottom: 10px; }
+        .card { background: white; color: #1f2937; border-radius: 20px; padding: 40px; margin: 20px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .input, select, textarea { width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1em; margin: 10px 0; }
+        textarea { min-height: 100px; resize: vertical; }
+        .btn { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 1em; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .hidden { display: none !important; }
+        .contract-box { background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 10px; padding: 20px; margin: 15px 0; }
+        .clause { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .badge { display: inline-block; background: #1e3a8a; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8em; margin: 5px; }
+        .feature { display: flex; align-items: center; margin: 15px 0; }
+        .feature-icon { background: #1e3a8a; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="font-size: 3em;">📜</div>
+            <h1>ContractGenius</h1>
+            <p>AI-Powered Legal Contract Generator</p>
+        </div>
+
+        <!-- Input Form -->
+        <div id="inputSection" class="card">
+            <h2 style="margin-bottom: 20px;">Create Legal Contract in Minutes</h2>
+
+            <div style="margin: 15px 0;">
+                <label>Contract Type</label>
+                <select id="contractType">
+                    <option value="nda">Non-Disclosure Agreement (NDA)</option>
+                    <option value="freelance">Freelance Service Agreement</option>
+                    <option value="employment">Employment Contract</option>
+                    <option value="partnership">Partnership Agreement</option>
+                    <option value="lease">Rental/Lease Agreement</option>
+                    <option value="sales">Sales Agreement</option>
+                </select>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Party A (You/Your Company)</label>
+                <input type="text" class="input" id="partyA" placeholder="e.g., John Smith or ABC Corp LLC">
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Party B (Other Party)</label>
+                <input type="text" class="input" id="partyB" placeholder="e.g., Jane Doe or XYZ Inc">
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Effective Date</label>
+                <input type="date" class="input" id="effectiveDate">
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Additional Terms (Optional)</label>
+                <textarea id="additionalTerms" placeholder="Any specific terms, durations, or conditions..."></textarea>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="generateContract()">⚖️ Generate Contract</button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsSection" class="card hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <button class="btn" onclick="reset()" style="font-size: 0.9em;">← Back</button>
+                <h2>Your AI-Generated Contract</h2>
+            </div>
+
+            <div class="contract-box">
+                <h3 style="color: #1e3a8a; text-align: center; margin-bottom: 20px;" id="contractTitle">NON-DISCLOSURE AGREEMENT</h3>
+                
+                <p style="margin: 15px 0;"><strong>This Non-Disclosure Agreement</strong> ("Agreement") is entered into as of <span id="showDate"></span> by and between:</p>
+                
+                <div style="margin: 15px 0; padding: 15px; background: #f3f4f6; border-radius: 8px;">
+                    <strong>Party A:</strong> <span id="showPartyA"></span><br>
+                    <strong>Party B:</strong> <span id="showPartyB"></span>
+                </div>
+
+                <h4 style="margin: 20px 0 10px 0;">1. PURPOSE</h4>
+                <p>The parties wish to explore a business opportunity of mutual interest, and in connection with this opportunity, each party may disclose to the other certain confidential technical and business information.</p>
+
+                <h4 style="margin: 20px 0 10px 0;">2. DEFINITION OF CONFIDENTIAL INFORMATION</h4>
+                <div class="clause">"Confidential Information" means any information, including but not limited to: technical data, trade secrets, know-how, research, product plans, products, services, customers, markets, software, developments, inventions, processes, formulas, technology, designs, drawings, engineering, hardware configuration, marketing or finances.</div>
+
+                <h4 style="margin: 20px 0 10px 0;">3. OBLIGATIONS</h4>
+                <p>Each party agrees to:</p>
+                <ul style="margin: 10px 0 10px 20px;">
+                    <li>Hold the other party's Confidential Information in strict confidence</li>
+                    <li>Not disclose Confidential Information to any third parties</li>
+                    <li>Use Confidential Information only for the permitted purpose</li>
+                    <li>Protect Confidential Information with at least the same degree of care as its own confidential information</li>
+                </ul>
+
+                <h4 style="margin: 20px 0 10px 0;">4. TERM</h4>
+                <p>This Agreement shall remain in effect for <strong>2 years</strong> from the Effective Date, unless terminated earlier by either party with 30 days written notice.</p>
+
+                <h4 style="margin: 20px 0 10px 0;">5. GOVERNING LAW</h4>
+                <p>This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware.</p>
+
+                <div id="additionalClauses" style="margin-top: 20px;"></div>
+
+                <div style="margin-top: 40px; border-top: 2px solid #e5e7eb; padding-top: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <p><strong>Party A Signature:</strong></p>
+                            <div style="border-bottom: 1px solid #000; height: 40px; margin-top: 30px;"></div>
+                            <p style="font-size: 0.9em;">Date: _______________</p>
+                        </div>
+                        <div>
+                            <p><strong>Party B Signature:</strong></p>
+                            <div style="border-bottom: 1px solid #000; height: 40px; margin-top: 30px;"></div>
+                            <p style="font-size: 0.9em;">Date: _______________</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #eff6ff; border: 2px solid #3b82f6; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 style="margin-bottom: 10px;">⚠️ Important Legal Notice</h4>
+                <p style="font-size: 0.9em; color: #6b7280;">This is an AI-generated template and does not constitute legal advice. Please consult with a qualified attorney before using any legal document.</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px;">
+                <h3>Get Unlimited Contracts</h3>
+                <p style="margin: 15px 0;">All contract types, PDF export, lawyer review requests, custom clauses</p>
+                
+                <div style="margin: 20px 0;">
+                    <div style="font-size: 2.5em; font-weight: bold;">$39</div>
+                    <div>/month unlimited</div>
+                </div>
+                
+                <button style="background: white; color: #1e3a8a; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer;" onclick="window.open('https://ko-fi.com/tezfiles', '_blank')">☕ Support on Ko-fi</button>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="card">
+            <h3>What's Included</h3>
+            
+            <div class="feature">
+                <div class="feature-icon">📄</div>
+                <div><strong>6 Contract Types</strong><br>NDA, Freelance, Employment, Partnership, Lease, Sales</div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">✍️</div>
+                <div><strong>Auto-Fill Parties</strong><br>Enter names, dates, terms - auto-generate</div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">📥</div>
+                <div><strong>PDF Export</strong><br>Download ready-to-sign documents</div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <div><strong>Professional Templates</strong><br>Industry-standard legal language</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; opacity: 0.9; margin-top: 40px;">
+            <p>ContractGenius © 2024 • Built by Angel Army</p>
+        </div>
+    </div>
+
+    <script>
+        const contractTypes = {
+            nda: { title: "NON-DISCLOSURE AGREEMENT", clauses: "" },
+            freelance: { title: "FREELANCE SERVICE AGREEMENT", clauses: "<h4 style='margin:20px 0 10px 0;'>4. SCOPE OF SERVICES</h4><p>Party A agrees to provide the following services to Party B as outlined in the attached statement of work.</p><h4 style='margin:20px 0 10px 0;'>5. PAYMENT TERMS</h4><p>Payment shall be made within 30 days of invoice date. Late payments shall incur a fee of 1.5% per month.</p>" },
+            employment: { title: "EMPLOYMENT CONTRACT", clauses: "<h4 style='margin:20px 0 10px 0;'>4. COMPENSATION</h4><p>Party B shall receive the following compensation as outlined in a separate offer letter.</p><h4 style='margin:20px 0 10px 0;'>5. BENEFITS</h4><p>Party B shall be entitled to all standard company benefits as outlined in the employee handbook.</p>" },
+            partnership: { title: "PARTNERSHIP AGREEMENT", clauses: "<h4 style='margin:20px 0 10px 0;'>4. CAPITAL CONTRIBUTIONS</h4><p>Each partner agrees to contribute capital as outlined in Schedule A.</p><h4 style='margin:20px 0 10px 0;'>5. PROFIT SHARING</h4><p>Profits and losses shall be shared equally among partners unless otherwise agreed.</p>" },
+            lease: { title: "RESIDENTIAL LEASE AGREEMENT", clauses: "<h4 style='margin:20px 0 10px 0;'>4. RENT</h4><p>Rent shall be due on the 1st of each month. Late payments shall incur a fee of $50.</p><h4 style='margin:20px 0 10px 0;'>5. SECURITY DEPOSIT</h4><p>A security deposit equal to one month's rent shall be held by Party A.</p>" },
+            sales: { title: "SALES AGREEMENT", clauses: "<h4 style='margin:20px 0 10px 0;'>4. PURCHASE PRICE</h4><p>The total purchase price shall be as specified in the attached invoice.</p><h4 style='margin:20px 0 10px 0;'>5. DELIVERY</h4><p>Delivery shall be made within 30 days of order confirmation.</p>" }
+        };
+
+        function generateContract() {
+            const contractType = document.getElementById('contractType').value;
+            const partyA = document.getElementById('partyA').value;
+            const partyB = document.getElementById('partyB').value;
+            const effectiveDate = document.getElementById('effectiveDate').value;
+            const additionalTerms = document.getElementById('additionalTerms').value;
+
+            if (!partyA || !partyB) {
+                alert('Please enter both party names');
+                return;
+            }
+
+            const contract = contractTypes[contractType];
+            
+            document.getElementById('contractTitle').textContent = contract.title;
+            document.getElementById('showPartyA').textContent = partyA;
+            document.getElementById('showPartyB').textContent = partyB;
+            document.getElementById('showDate').textContent = effectiveDate || new Date().toLocaleDateString();
+            
+            if (additionalTerms) {
+                document.getElementById('additionalClauses').innerHTML = `<h4 style='margin:20px 0 10px 0;'>6. ADDITIONAL TERMS</h4><p>${additionalTerms}</p>`;
+            } else {
+                document.getElementById('additionalClauses').innerHTML = '';
+            }
+
+            document.getElementById('inputSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+        }
+
+        function reset() {
+            document.getElementById('resultsSection').classList.add('hidden');
+            document.getElementById('inputSection').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

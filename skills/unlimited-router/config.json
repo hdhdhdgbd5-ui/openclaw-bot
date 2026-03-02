@@ -1,0 +1,149 @@
+{
+  "name": "Unlimited API Router",
+  "version": "1.0.0",
+  "description": "Infinite API key rotation system - NEVER hit rate limits!",
+  "rotation": {
+    "mode": "round-robin",
+    "fallbackOnError": true,
+    "retryAttempts": 3,
+    "healthCheckInterval": 30000
+  },
+  "providers": [
+    {
+      "id": "ollama-local-1",
+      "name": "Ollama Local (kimi-k2.5)",
+      "type": "ollama",
+      "enabled": true,
+      "priority": 1,
+      "models": ["kimi-k2.5:cloud"],
+      "config": {
+        "baseUrl": "http://localhost:11434"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 20,
+        "requestsPerHour": 500,
+        "cooldownMs": 3000
+      }
+    },
+    {
+      "id": "groq-account-1",
+      "name": "Groq (llama-3.1-8b)",
+      "type": "groq",
+      "enabled": true,
+      "priority": 2,
+      "models": ["llama-3.1-8b-instant"],
+      "config": {
+        "baseUrl": "https://api.groq.com/openai/v1",
+        "apiKeyFile": "secrets/groq.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 30,
+        "requestsPerDay": 14400,
+        "cooldownMs": 60000
+      }
+    },
+    {
+      "id": "groq-account-2",
+      "name": "Groq Account 2 (ADD KEY)",
+      "type": "groq",
+      "enabled": false,
+      "priority": 3,
+      "models": ["llama-3.1-8b-instant"],
+      "config": {
+        "baseUrl": "https://api.groq.com/openai/v1",
+        "apiKeyFile": "secrets/groq2.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 30,
+        "requestsPerDay": 14400,
+        "cooldownMs": 60000
+      }
+    },
+    {
+      "id": "groq-account-3",
+      "name": "Groq Account 3 (ADD KEY)",
+      "type": "groq",
+      "enabled": false,
+      "priority": 4,
+      "models": ["llama-3.1-8b-instant"],
+      "config": {
+        "baseUrl": "https://api.groq.com/openai/v1",
+        "apiKeyFile": "secrets/groq3.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 30,
+        "requestsPerDay": 14400,
+        "cooldownMs": 60000
+      }
+    },
+    {
+      "id": "github-models",
+      "name": "GitHub Models (ADD TOKEN)",
+      "type": "github",
+      "enabled": false,
+      "priority": 5,
+      "models": ["gpt-4o", "gpt-4o-mini"],
+      "config": {
+        "baseUrl": "https://models.inference.ai.azure.com",
+        "apiKeyFile": "secrets/github.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 15,
+        "requestsPerHour": 1000
+      }
+    },
+    {
+      "id": "openrouter-free",
+      "name": "OpenRouter Free (ADD KEY)",
+      "type": "openrouter",
+      "enabled": false,
+      "priority": 6,
+      "models": ["meta-llama/llama-3.1-8b-instruct:free"],
+      "config": {
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "apiKeyFile": "secrets/openrouter.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 10,
+        "requestsPerDay": 200
+      }
+    },
+    {
+      "id": "cloudflare-ai",
+      "name": "Cloudflare AI (ADD CREDENTIALS)",
+      "type": "cloudflare",
+      "enabled": false,
+      "priority": 7,
+      "models": ["@cf/meta/llama-3.1-8b-instruct"],
+      "config": {
+        "baseUrl": "https://api.cloudflare.com/client/v4/accounts",
+        "accountIdFile": "secrets/cloudflare_account.txt",
+        "apiKeyFile": "secrets/cloudflare_api.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 50
+      }
+    },
+    {
+      "id": "ollama-cloud",
+      "name": "Ollama Cloud (FREE)",
+      "type": "ollama",
+      "enabled": false,
+      "priority": 8,
+      "models": ["llama3.2", "qwen2.5"],
+      "config": {
+        "baseUrl": "https://api.ollama.com/v1",
+        "apiKeyFile": "secrets/ollama_cloud.txt"
+      },
+      "rateLimits": {
+        "requestsPerMinute": 10
+      }
+    }
+  ],
+  "status": {
+    "totalRequests": 0,
+    "providersActive": 2,
+    "providersConfigured": 8,
+    "uptime": "24/7"
+  }
+}

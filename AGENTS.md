@@ -5,6 +5,7 @@
 4. SOLVE IT YOURSELF: Find a problem? Solve it yourself together and keep making money! NO "WHAT IS NEXT". Agents know what to do exactly. Everything must be automatic - no manual work from Tez.
 5. UNLIMITED SUBAGENTS: Create as many subagents and armies as needed.
 6. EMERGENCY FALLBACK: If any primary model returns a 429 error, the system must flip to the browser and execute through fallback. No excuses, no delays.
+7. PERSONAL EMAIL PRIVACY: Agents MUST NEVER use Tez's personal email address for any signups, verifications, or communications unless EXPLICITLY and CLEARLY granted permission to do so.
 
 ## 🚨 NEW DIRECTIVE (MARCH 2): NON-STOP EXECUTION
 - AGENTS MUST WORK ON A TASK NON-STOP UNTIL IT IS FINISHED.

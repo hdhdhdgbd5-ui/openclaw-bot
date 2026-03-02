@@ -1,0 +1,10 @@
+# Heroku/Render/Railway Process Definition
+
+# Main trading bot worker
+bot: python main.py
+
+# API server
+api: python main.py --api
+
+# Release commands
+release: python main.py --init-db

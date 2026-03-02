@@ -1,0 +1,17 @@
+{
+  "name": "pinmx-automation",
+  "version": "1.0.0",
+  "description": "pinmx.com temp email automation",
+  "main": "scripts/index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/main.mjs",
+    "test": "node scripts/main.mjs test"
+  },
+  "keywords": ["pinmx", "temp email", "automation", "disposable email"],
+  "author": "Skills Army",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}

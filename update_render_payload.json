@@ -1,0 +1,7 @@
+{
+  "serviceDetails": {
+    "envSpecificDetails": {
+      "dockerCommand": "sh -c \"mkdir -p ~/.openclaw && echo $OPENCLAW_JSON > ~/.openclaw/openclaw.json && node openclaw.mjs gateway --port $PORT --bind 0.0.0.0 --allow-unconfigured\""
+    }
+  }
+}

@@ -1,0 +1,94 @@
+# CryptoTradeGenius - Docker Compose
+# Local development setup
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: cryptotradegenius-db
+    environment:
+      POSTGRES_USER: cryptotrader
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: cryptotradegenius
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cryptotrader -d cryptotradegenius"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: cryptotradegenius-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  # Trading Bot
+  bot:
+    build: .
+    container_name: cryptotradegenius-bot
+    environment:
+      - TRADING_MODE=paper
+      - DATABASE_URL=postgresql://cryptotrader:your_secure_password@db:5432/cryptotradegenius
+      - REDIS_URL=redis://redis:6379/0
+      - LOG_LEVEL=INFO
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - BINANCE_TESTNET_API_KEY=${BINANCE_TESTNET_API_KEY}
+      - BINANCE_TESTNET_SECRET=${BINANCE_TESTNET_SECRET}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    command: python main.py --paper
+    restart: unless-stopped
+
+  # API Server
+  api:
+    build: .
+    container_name: cryptotradegenius-api
+    environment:
+      - TRADING_MODE=paper
+      - DATABASE_URL=postgresql://cryptotrader:your_secure_password@db:5432/cryptotradegenius
+      - REDIS_URL=redis://redis:6379/0
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - API_SECRET_KEY=${API_SECRET_KEY:-change-this-in-production}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+    depends_on:
+      - db
+      - redis
+    command: python main.py --api
+    restart: unless-stopped
+
+  # Adminer (Database GUI)
+  adminer:
+    image: adminer:latest
+    container_name: cryptotradegenius-adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  redis_data:

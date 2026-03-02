@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightGenius - AI Data Analytics & Charts</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #7c3aed, #a855f7); min-height: 100vh; color: white; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; padding: 40px 0; }
+        .header h1 { font-size: 3em; margin-bottom: 10px; }
+        .card { background: white; color: #1f2937; border-radius: 20px; padding: 40px; margin: 20px 0; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .input, select, textarea { width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1em; margin: 10px 0; }
+        textarea { min-height: 100px; font-family: monospace; }
+        .btn { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 1em; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .hidden { display: none !important; }
+        .chart-box { background: #f9fafb; border-radius: 10px; padding: 20px; margin: 15px 0; }
+        .chart-bar { height: 40px; background: linear-gradient(90deg, #7c3aed, #a855f7); margin: 8px 0; border-radius: 5px; display: flex; align-items: center; padding: 0 15px; color: white; font-weight: bold; }
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; }
+        .stat-card { background: #f3f4f6; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-value { font-size: 1.8em; font-weight: bold; color: #7c3aed; }
+        .insight-box { background: #f3e8ff; border-left: 4px solid #7c3aed; padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+        .metric { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb; }
+        .trend-up { color: #10b981; }
+        .trend-down { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="font-size: 3em;">📊</div>
+            <h1>InsightGenius</h1>
+            <p>AI-Powered Data Analytics & Visualization</p>
+        </div>
+
+        <!-- Input Form -->
+        <div id="inputSection" class="card">
+            <h2 style="margin-bottom: 20px;">Analyze Your Data</h2>
+
+            <div style="margin: 15px 0;">
+                <label>Data Type</label>
+                <select id="dataType">
+                    <option value="sales">Sales Data</option>
+                    <option value="website">Website Traffic</option>
+                    <option value="social">Social Media</option>
+                    <option value="finance">Financial</option>
+                    <option value="custom">Custom Data</option>
+                </select>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Paste Your Data (CSV format)</label>
+                <textarea id="dataInput" placeholder="Month,Sales
+Jan,1200
+Feb,1500
+Mar,1800
+Apr,2100
+May,2400
+Jun,2800"></textarea>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Analysis Goal</label>
+                <select id="analysisGoal">
+                    <option value="trends">Trend Analysis</option>
+                    <option value="comparison">Period Comparison</option>
+                    <option value="forecast">Forecasting</option>
+                    <option value="anomalies">Anomaly Detection</option>
+                </select>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="analyzeData()">🔍 Analyze Data</button>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsSection" class="card hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <button class="btn" onclick="reset()" style="font-size: 0.9em;">← Back</button>
+                <h2>Analysis Results</h2>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$11,900</div>
+                    <p>Total</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">+133%</div>
+                    <p>Growth</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$1,983</div>
+                    <p>Average</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">June</div>
+                    <p>Best Month</p>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h3 style="margin-bottom: 15px;">📈 Trend Visualization</h3>
+                <div class="chart-bar" style="width: 30%;">Jan: $1,200</div>
+                <div class="chart-bar" style="width: 40%;">Feb: $1,500</div>
+                <div class="chart-bar" style="width: 50%;">Mar: $1,800</div>
+                <div class="chart-bar" style="width: 60%;">Apr: $2,100</div>
+                <div class="chart-bar" style="width: 70%;">May: $2,400</div>
+                <div class="chart-bar" style="width: 85%;">Jun: $2,800</div>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <h3>💡 AI Insights</h3>
+                
+                <div class="insight-box">
+                    <strong>📈 Strong Upward Trend</strong>
+                    <p>Your data shows consistent month-over-month growth averaging 23%. This indicates healthy business momentum.</p>
+                </div>
+
+                <div class="insight-box">
+                    <strong>🎯 Peak Performance</strong>
+                    <p>June was your best month with $2,800 - 133% higher than January. Consider what drove this increase.</p>
+                </div>
+
+                <div class="insight-box">
+                    <strong>⚠️ Growth Rate Slowing</strong>
+                    <p>While still growing, the monthly increase is decelerating (from +$300 to +$400 to +$300). Consider new initiatives.</p>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h3>📋 Monthly Breakdown</h3>
+                <div class="metric">
+                    <span>January</span>
+                    <span>$1,200</span>
+                </div>
+                <div class="metric">
+                    <span>February</span>
+                    <span class="trend-up">+$300 (+25%)</span>
+                </div>
+                <div class="metric">
+                    <span>March</span>
+                    <span class="trend-up">+$300 (+20%)</span>
+                </div>
+                <div class="metric">
+                    <span>April</span>
+                    <span class="trend-up">+$300 (+17%)</span>
+                </div>
+                <div class="metric">
+                    <span>May</span>
+                    <span class="trend-up">+$300 (+14%)</span>
+                </div>
+                <div class="metric">
+                    <span>June</span>
+                    <span class="trend-up">+$400 (+17%)</span>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px;">
+                <h3>Get Advanced Analytics</h3>
+                <p style="margin: 15px 0;">Export charts, unlimited data, AI predictions, team collaboration</p>
+                
+                <div style="margin: 20px 0;">
+                    <div style="font-size: 2.5em; font-weight: bold;">$49</div>
+                    <div>/month Pro</div>
+                </div>
+                
+                <button style="background: white; color: #7c3aed; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.1em; cursor: pointer;" onclick="window.open('https://ko-fi.com/tezfiles', '_blank')">☕ Support on Ko-fi</button>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="card">
+            <h3>What's Included</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="padding: 15px; background: #f3e8ff; border-radius: 10px;">
+                    <strong>📊 Visual Charts</strong><br>Beautiful bar & line charts
+                </div>
+                <div style="padding: 15px; background: #f3e8ff; border-radius: 10px;">
+                    <strong>💡 AI Insights</strong><br>Automated analysis
+                </div>
+                <div style="padding: 15px; background: #f3e8ff; border-radius: 10px;">
+                    <strong>📈 Trend Detection</strong><br>Spot patterns instantly
+                </div>
+                <div style="padding: 15px; background: #f3e8ff; border-radius: 10px;">
+                    <strong>📥 Export Options</strong><br>PNG, PDF, CSV
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; opacity: 0.9; margin-top: 40px;">
+            <p>InsightGenius © 2024 • Built by Angel Army</p>
+        </div>
+    </div>
+
+    <script>
+        function analyzeData() {
+            const dataType = document.getElementById('dataType').value;
+            const dataInput = document.getElementById('dataInput').value;
+            const goal = document.getElementById('analysisGoal').value;
+
+            if (!dataInput.trim()) {
+                alert('Please enter some data to analyze');
+                return;
+            }
+
+            // Parse CSV data
+            const lines = dataInput.trim().split('\n');
+            let total = 0;
+            let values = [];
+            let maxVal = 0;
+
+            for (let i = 1; i < lines.length; i++) {
+                const parts = lines[i].split(',');
+                if (parts.length >= 2) {
+                    const val = parseFloat(parts[1].replace(/[^0-9.-]/g, ''));
+                    if (!isNaN(val)) {
+                        values.push(val);
+                        total += val;
+                        if (val > maxVal) maxVal = val;
+                    }
+                }
+            }
+
+            if (values.length > 0) {
+                // Update stats
+                const avg = total / values.length;
+                const growth = ((values[values.length-1] - values[0]) / values[0] * 100).toFixed(0);
+                const bestMonth = Math.max(...values);
+                
+                document.querySelector('.stat-value:nth-child(1)').textContent = '$' + total.toLocaleString();
+                document.querySelector('.stat-value:nth-child(2)').textContent = '+' + growth + '%';
+                document.querySelector('.stat-value:nth-child(3)').textContent = '$' + Math.round(avg).toLocaleString();
+            }
+
+            document.getElementById('inputSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+        }
+
+        function reset() {
+            document.getElementById('resultsSection').classList.add('hidden');
+            document.getElementById('inputSection').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

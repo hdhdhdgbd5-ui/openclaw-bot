@@ -1,0 +1,21 @@
+⚠️ CRITICAL FILES - DO NOT DELETE ⚠️
+
+This folder contains PRODUCT ASSETS built by Angel Army.
+
+✅ BUILT PRODUCTS:
+1. RentVault - Tenant evidence app (READY)
+2. StreakVault - Habit tracker (READY)  
+3. FocusMaster - Ad game (READY)
+4. BudgetVault - Building now...
+
+TO DEPLOY:
+1. Create GitHub account
+2. Make repos for each product
+3. Upload files
+4. Enable GitHub Pages
+5. Monetize
+
+WALLET: 0xe23d9C5422A8bdB5281b15596111814808f98F1A
+GUMROAD: https://moonlit4467.gumroad.com/l/dlnpm
+
+Angel will continue building when user reconnects.

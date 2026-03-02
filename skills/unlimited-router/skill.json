@@ -1,0 +1,21 @@
+{
+  "name": "unlimited-router",
+  "version": "1.0.0",
+  "description": "Infinite API key rotation - NEVER hit rate limits!",
+  "entry": "router-skill.js",
+  "commands": {
+    "chat": {
+      "description": "Send a chat message through the router",
+      "parameters": {
+        "messages": "array",
+        "model": "string (optional)"
+      }
+    },
+    "status": {
+      "description": "Get router status"
+    },
+    "test": {
+      "description": "Test all providers"
+    }
+  }
+}

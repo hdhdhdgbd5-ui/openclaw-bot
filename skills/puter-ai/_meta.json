@@ -1,0 +1,26 @@
+{
+  "name": "puter-ai",
+  "description": "Free AI chat using Puter.js with Gemini models. No API keys required - uses Puter.js library for free AI access in browser context.",
+  "version": "1.0.0",
+  "author": "OpenClaw",
+  "metadata": {
+    "requires": {
+      "bins": ["node"],
+      "noApiKey": true
+    },
+    "emoji": "🚀"
+  },
+  "skills": ["ai", "chat", "puter", "gemini", "free-ai"],
+  "commands": [
+    {
+      "name": "chat",
+      "description": "Chat with AI using Puter.js (Gemini models)",
+      "usage": "node {baseDir}/scripts/chat.mjs \"Your message here\""
+    },
+    {
+      "name": "test",
+      "description": "Test Puter.js integration",
+      "usage": "node {baseDir}/scripts/test.mjs"
+    }
+  ]
+}

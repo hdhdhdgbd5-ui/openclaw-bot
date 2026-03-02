@@ -1,0 +1,25 @@
+{
+  "name": "custom-search",
+  "description": "Free web search using DuckDuckGo HTML. No API keys required - uses direct HTML scraping for search and content extraction.",
+  "version": "1.0.0",
+  "author": "OpenClaw",
+  "metadata": {
+    "requires": {
+      "bins": ["node"],
+      "noApiKey": true
+    }
+  },
+  "skills": ["web-search", "scraping", "content-extraction"],
+  "commands": [
+    {
+      "name": "search",
+      "description": "Search the web using DuckDuckGo",
+      "usage": "node {baseDir}/scripts/search.mjs \"query\" [-n count]"
+    },
+    {
+      "name": "extract",
+      "description": "Extract readable content from URLs",
+      "usage": "node {baseDir}/scripts/extract.mjs \"url1\" [\"url2\" ...]"
+    }
+  ]
+}

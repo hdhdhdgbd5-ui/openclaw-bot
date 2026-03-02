@@ -1,0 +1,14 @@
+{
+  "name": "programming-languages",
+  "version": "1.0.0",
+  "description": "Comprehensive mastery reference for 15 programming languages - C/C++, Assembly, Rust, Haskell, APL/J/K, Python, JavaScript/TypeScript, Go, Scala, Prolog, Lisp/Scheme, Forth/PostScript, Erlang/Elixir, OCaml/F#, Solidity",
+  "author": "Language Mastery Army",
+  "tags": ["programming", "languages", "reference", "c", "cpp", "rust", "python", "javascript", "go", "haskell", "scala", "prolog", "lisp", "erlang", "elixir", "ocaml", "fsharp", "solidity", "assembly"],
+  "capabilities": [
+    "syntax_reference",
+    "code_examples",
+    "pattern_guide",
+    "performance_optimization",
+    "use_cases"
+  ]
+}

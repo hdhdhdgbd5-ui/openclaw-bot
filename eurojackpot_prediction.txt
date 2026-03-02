@@ -1,0 +1,57 @@
+# EuroJackpot Prediction Analysis
+# Date: Feb 23, 2026
+# Delivery: Feb 24, 2026 at 6 PM
+
+## Data Sources
+- EuroJackpot official results from euro-jackpot.net
+- Statistics from 409 draws (March 2022 - February 2026)
+- Recent draw analysis (last 10 draws)
+
+## Key Findings
+
+### Hot Numbers (Frequency - Last 4 Years)
+Main Numbers:
+1. 11 - 56 times (hottest)
+2. 45 - 50 times
+3. 20 - 50 times
+4. 30 - 50 times
+5. 34 - 49 times
+
+Euro Numbers:
+1. 3 - 81 times (hottest)
+2. 5 - 79 times
+3. 12 - 75 times
+
+### Recent Draw Analysis (Last 10 draws)
+Main numbers appearing multiple times:
+- 23: 4 times
+- 40: 4 times
+- 37, 39, 44, 45, 8: 3 times each
+
+Euro numbers appearing:
+- 7: 4 times
+- 6, 9: 3 times each
+
+### Pattern Analysis
+- 3 odd + 2 even = 31% (most common main pattern)
+- 1 odd + 1 even = 54% (most common euro pattern)
+- Most common sum: 120 for main numbers
+
+## Final Prediction (for Feb 24, 2026 draw)
+
+MAIN NUMBERS: 11, 17, 20, 34, 45
+EURO NUMBERS: 3, 6
+
+Rationale:
+- 11: Hottest number overall (56 times in 4 years)
+- 17: Hot number (48 times), recent appearance
+- 20: Very hot (50 times), appeared 20 days ago - due
+- 34: Hot (49 times), appeared 13 days ago
+- 45: Very hot (50 times), appeared 10 days ago
+
+Euro:
+- 3: Hottest euro number (81 times)
+- 6: Hot (69 times), appeared in last draw (recency)
+
+Pattern: 3 odd (11, 17, 45) + 2 even (20, 34) = matches 31% most common
+Sum: 127 (close to optimal 120)

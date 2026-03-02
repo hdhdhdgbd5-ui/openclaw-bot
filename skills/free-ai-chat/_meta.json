@@ -1,0 +1,21 @@
+{
+  "name": "free-ai-chat",
+  "description": "Free AI chat using Bing Copilot via browser automation. No API keys required - uses web automation to chat with Bing Copilot.",
+  "version": "1.0.0",
+  "author": "OpenClaw",
+  "metadata": {
+    "requires": {
+      "bins": ["node"],
+      "noApiKey": true
+    },
+    "emoji": "🤖"
+  },
+  "skills": ["ai", "chat", "free-ai", "copilot"],
+  "commands": [
+    {
+      "name": "chat",
+      "description": "Chat with Bing Copilot for free AI responses",
+      "usage": "node {baseDir}/scripts/chat.mjs \"Your message here\""
+    }
+  ]
+}

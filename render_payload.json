@@ -1,0 +1,19 @@
+{
+  "type": "web_service",
+  "name": "openclaw-cloud-backup",
+  "ownerId": "tea-d6d0uh4tgctc73es86r0",
+  "repo": "https://github.com/openclaw/openclaw",
+  "autoDeploy": "yes",
+  "serviceDetails": {
+    "env": "docker",
+    "plan": "free",
+    "region": "oregon",
+    "numInstances": 1
+  },
+  "envVars": [
+    {
+      "key": "PORT",
+      "value": "8080"
+    }
+  ]
+}

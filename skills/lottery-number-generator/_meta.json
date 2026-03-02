@@ -1,0 +1,10 @@
+{
+  "name": "lottery-number-generator",
+  "version": "1.0.0",
+  "description": "Generate lottery numbers using various strategies",
+  "author": "Skills Army",
+  "language": "python",
+  "dependencies": [],
+  "tags": ["lottery", "generator", "random", "prediction"],
+  "created_at": "2026-02-24"
+}
