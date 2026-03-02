@@ -17,10 +17,14 @@ Read these files in this order:
 4. `SOUL.md`
 5. `TOOLS.md`
 
-## Step 2 — Load ALL session memory (MUST READ ALL)
-- Read **every** file matching `memory/*.md`.
-- Read in **sorted filename order**.
-- Do not skip “idea reports”, “marketing”, or “skill upgrade” files — they are part of the system state.
+## Step 2 — Load ALL state files (MUST READ ALL)
+1) Read `BOOT_FILES.md`
+2) Read **EVERY** file listed in `BOOT_FILES.md` (in order).
+
+Notes:
+- This includes `memory/*.md` AND all other markdown files that define rules, workflows, products, and system state.
+- Do not skip “idea reports”, “marketing”, “skills”, or “automation” docs — they are part of the system state.
+- If any file can’t be read (missing/permission), STOP and alert the user.
 
 ## Step 3 — Restore mission state
 After reading, you must be able to answer:
